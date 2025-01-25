@@ -1,1 +1,1 @@
-{"root":["./src/index.ts"],"version":"5.7.3"}
+{"root":["./src/account.ts","./src/index.ts","./src/multisigaccount.ts","./src/token_program.ts"],"errors":true,"version":"5.7.3"}

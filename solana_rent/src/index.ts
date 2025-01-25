@@ -1,6 +1,6 @@
 import { clusterApiUrl, Connection, LAMPORTS_PER_SOL } from "@solana/web3.js";
 
-const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
+export const connection = new Connection(clusterApiUrl('mainnet-beta'), 'confirmed');
 
 (async () => {
   const dataSize = 16;
