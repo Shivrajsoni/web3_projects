@@ -7,19 +7,24 @@ export const payer = Keypair.fromSecretKey(Uint8Array.from([141, 86, 227, 57, 13
 
 const mintAuthority = payer;
 
-async function createMintForToken(payer, mintAuthority) {
+interface CreateMintForTokenParams {
+  payer: Keypair;
+  mintAuthority: Keypair;
+}
+
+async function createMintForToken({ payer, mintAuthority }: CreateMintForTokenParams): Promise<string> {
   const mint = await createMint(
     connection,
     payer,
-    mintAuthority,
+    mintAuthority.publicKey,
     null,
     6,
-    TOKEN_PROGRAM_ID,
+    mintAuthority,
   );
   console.log(`Mint created at `, mint);
-  return mint;
+  return mint.toBase58();
 }
 async function main() {
-  const mint = await createMintForToken(payer, mintAuthority);
+  const mint = await createMintForToken({ payer, mintAuthority });
 }
 main();
